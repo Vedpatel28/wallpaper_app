@@ -21,18 +21,19 @@ class home_page extends StatelessWidget {
                 List<ApiModal> allPosts = snapshot.data!;
 
                 return ListView.builder(
-                  itemCount: allPosts.length,
-                  itemBuilder: (context, index) =>
-                      Card(
+                    // itemCount: allPosts.length,
+                    itemBuilder: (context, index) {
+                      return Card(
                         child: ListTile(
                           title: Text("Title : ${allPosts[index].title}"),
                         ),
-                      ),
-                );
+                      );
+                    },
+                    );
               } else if (snapshot.hasError) {
-              return Text ("${ snapshot.error }");
-            } else {
-              return const CircularProgressIndicator();
+                return Text("${snapshot.error}");
+              } else {
+                return const CircularProgressIndicator();
               }
             },
           ),

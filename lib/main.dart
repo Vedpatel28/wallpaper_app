@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 import 'package:wallpaper_app/views/screen/home_page.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(
     MultiProvider(
       providers: [

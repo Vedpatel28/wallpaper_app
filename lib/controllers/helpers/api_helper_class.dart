@@ -8,7 +8,7 @@ class ApiHelpers {
 
   static final ApiHelpers apiHelpers = ApiHelpers._();
 
-  String api = "https://dummyjson.com/posts";
+  String api = "https://jsonplaceholder.typicode.com/posts";
 
   Future<ApiModal?> getSingleResponse() async {
     http.Response response = await http.get(Uri.parse(api));
@@ -24,8 +24,9 @@ class ApiHelpers {
   Future<List<ApiModal>?> getMultipleResponse() async {
     http.Response response = await http.get(Uri.parse(api));
 
+    List data = jsonDecode(response.body);
+
     if (response.statusCode == 200) {
-      List data = jsonDecode(response.body);
       List<ApiModal> posts = data.map((e) => ApiModal.fromMap(data: e)).toList();
       return posts;
     }
