@@ -3,6 +3,7 @@ import 'package:wallpaper_app/controllers/api_controller.dart';
 import 'package:wallpaper_app/utilse/routes_utilse.dart';
 import 'package:provider/provider.dart';
 import 'package:wallpaper_app/views/screen/home_page.dart';
+import 'package:wallpaper_app/views/screen/info_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         AllRoutes.homePage: (context) => home_page(),
+        AllRoutes.wallPaperInfoPage: (context) => wallpaper_Info_Page(),
       },
     );
   }

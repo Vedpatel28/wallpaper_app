@@ -4,9 +4,17 @@ import 'package:wallpaper_app/modal/api_modal_class.dart';
 
 class ApiController extends ChangeNotifier {
   ApiModal? post;
+  List data = [];
 
   Future<void> getData() async {
     post = await ApiHelpers.apiHelpers.getSingleResponse();
     notifyListeners();
   }
+
+  search ({String val = 'tree'}) async {
+    data = await ApiHelpers.apiHelpers.getWallpaperResponse(query: val) ?? [];
+    notifyListeners();
+    return 0;
+  }
+
 }

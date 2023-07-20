@@ -6,35 +6,52 @@ import 'package:provider/provider.dart';
 import 'package:wallpaper_app/controllers/api_controller.dart';
 import 'package:wallpaper_app/utilse/routes_utilse.dart';
 
-class home_page extends StatelessWidget {
-  const home_page({super.key});
+class wallpaper_Info_Page extends StatelessWidget {
+  const wallpaper_Info_Page({super.key});
 
   @override
   Widget build(BuildContext context) {
     Size s = MediaQuery.of(context).size;
+    int fromIndex = ModalRoute.of(context)!.settings.arguments as int;
     return Scaffold(
       appBar: AppBar(
-        title: Text("WallPaper Select",style: GoogleFonts.wallpoet(),),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: const Icon(Icons.arrow_back_ios),
+        ),
+        title: Text(
+          "Wallpaper Detail",
+          style: GoogleFonts.wallpoet(),
+        ),
         centerTitle: true,
       ),
-      body: Consumer<ApiController>(builder: (context, provider, _) {
-        List data = provider.data;
-        return Padding(
-          padding: const EdgeInsets.all(12),
-          child: Center(
-            child: Column(
+      body: Padding(
+        padding: EdgeInsets.all(12),
+        child: Consumer<ApiController>(
+          builder: (context, provider, _) {
+            List data = provider.data;
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                TextField(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
+                Container(
+                  height: s.height * 0.3,
+                  width: s.width,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    image: DecorationImage(
+                      image: NetworkImage(
+                        data[fromIndex]['largeImageURL'],
+                      ),
+                      fit: BoxFit.cover,
                     ),
-                    suffixIcon: const Icon(Icons.search),
                   ),
-                  onSubmitted: (value) {
-                    provider.search(val: value);
-                  },
                 ),
+                SizedBox(height: s.height * 0.02),
+                Text("related WallPaper ", style: GoogleFonts.wallpoet(
+                  fontSize: s.height*0.02,
+                ),),
                 SizedBox(height: s.height * 0.02),
                 Expanded(
                   child: GridView.builder(
@@ -63,10 +80,10 @@ class home_page extends StatelessWidget {
                   ),
                 ),
               ],
-            ),
-          ),
-        );
-      }),
+            );
+          },
+        ),
+      ),
     );
   }
 }
