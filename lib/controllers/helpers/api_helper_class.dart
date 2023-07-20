@@ -10,6 +10,20 @@ class ApiHelpers {
 
   String api = "https://jsonplaceholder.typicode.com/posts";
 
+  Future<List?> getWallpaperResponse() async {
+    String wallpaperApi =
+        "https://pixabay.com/api/?key=38361497-af0d03b7f3d6a8dab35733f78";
+    http.Response response = await http.get(Uri.parse(wallpaperApi));
+
+    if (response.statusCode == 200) {
+      var wallpaper = jsonDecode(response.body);
+
+      List allWallpaper = wallpaper['hits'];
+
+      return allWallpaper;
+    }
+  }
+
   Future<ApiModal?> getSingleResponse() async {
     http.Response response = await http.get(Uri.parse(api));
 
@@ -24,10 +38,10 @@ class ApiHelpers {
   Future<List<ApiModal>?> getMultipleResponse() async {
     http.Response response = await http.get(Uri.parse(api));
 
-    List data = jsonDecode(response.body);
-
     if (response.statusCode == 200) {
-      List<ApiModal> posts = data.map((e) => ApiModal.fromMap(data: e)).toList();
+      List data = jsonDecode(response.body);
+      List<ApiModal> posts =
+          data.map((e) => ApiModal.fromMap(data: e)).toList();
       return posts;
     }
   }
