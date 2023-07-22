@@ -46,7 +46,9 @@ class home_page extends StatelessWidget {
                 child: Center(
                   child: Column(
                     children: [
-                      SizedBox(height: s.height*0.08),
+                      SizedBox(
+                        height: s.height * 0.08,
+                      ),
                       TextField(
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
