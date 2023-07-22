@@ -7,6 +7,8 @@ captivating canvas of beauty and inspiration. With an extensive collection of ha
 high-definition wallpapers, WallMaster allows you to explore a world of mesmerizing visuals 
 and express your individuality through personalized backgrounds.
 
+https://github.com/Vedpatel28/wallpaper_app/assets/130833918/e35b1e27-8493-4c46-8460-7b22699e8bc0
+
 <br>
 
 <img src = "https://github.com/Vedpatel28/wallpaper_app/assets/130833918/7aa2a3c0-fd09-4a38-817f-d473a774f230" height = "350"></img>
